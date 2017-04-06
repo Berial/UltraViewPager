@@ -209,6 +209,7 @@ public class UltraViewPagerView extends ViewPager implements UltraViewPagerAdapt
 
     @Override
     public void setCurrentItem(int item, boolean smoothScroll) {
+        if (pagerAdapter == null) return;
         if (pagerAdapter.getCount() != 0 && pagerAdapter.isEnableLoop()) {
             item = pagerAdapter.getCount() / 2 + item % pagerAdapter.getRealCount();
         }
@@ -217,6 +218,7 @@ public class UltraViewPagerView extends ViewPager implements UltraViewPagerAdapt
 
     @Override
     public int getCurrentItem() {
+        if (pagerAdapter == null) return;
         if (pagerAdapter.getCount() != 0) {
             int position = super.getCurrentItem();
             return position % pagerAdapter.getRealCount();
